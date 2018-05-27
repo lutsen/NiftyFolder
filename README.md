@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/lutsen/niftyfolder/master/niftyfolder-logo.svg" width="100" alt="NiftyFolder">
+  <img src="https://cdn.rawgit.com/lutsen/niftyfolder/master/niftyfolder-logo.png" width="100" alt="NiftyFolder">
 </p>
 <p align="center"><b>NiftyFolder turns any folder containing Google docs on your Google Drive into a website in minutes</b></p>
 <p align="center">(and working on turning those minutes in to seconds 😀)</p>
