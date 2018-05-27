@@ -78,7 +78,7 @@ $container['view'] = function ($c) {
 	$view->offsetSet('page_url', APP_URL . $c['request']->getUri()->getPath());
 
 	// Tree
-	$view->addExtension(new JordanLev\TwigTreeTag\Twig\Extension\TreeExtension());
+	$view->addExtension(new QEEP\TwigTreeTag\Twig\Extension\TreeExtension());
 
 	return $view;
 };

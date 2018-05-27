@@ -21,9 +21,9 @@
 		"slim/slim": "^3.0",
 		"slim/twig-view": "^2.0",
 		"slim/flash": "^0.2",
-		"twig/twig": "^1.0",
+		"twig/twig": "^2.0",
 		"tuupola/slim-basic-auth": "^2.0",
-		"jordanlev/twig-tree-tag": "^1.0"
+		"qeep-pro/twig-tree-tag": "^2.0"
 	},
 	"scripts": {
 		"post-create-project-cmd": [
