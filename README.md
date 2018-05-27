@@ -22,7 +22,7 @@ Requirements
 Install NiftyFolder
 --------------------
 
-Install NiftyFolder and its dependencies with [Composer](https://getcomposer.org/) with this command: `$ php composer.phar create-project lutsen/serge [project-name] 0.5`  
+Install NiftyFolder and its dependencies with [Composer](https://getcomposer.org/) with this command: `$ php composer.phar create-project lutsen/niftyfolder [project-name] dev-master`  
 (Replace [project-name] with the desired directory name for your new project)  
 
 The Composer script creates the *cache* directory, and *config.php* file for you.  
@@ -35,7 +35,7 @@ NiftyFolder uses [Slim HTTP Basic Authentication middleware](http://www.appelsii
 
 Create a Google API project web application.  
 
-Download the json client secret file from you Google API project, rename it to *client_secret.json* and add it to the NiftyFolder root directory.  
+Download the json client_id file from you Google API project, make sure the file is named *client_id.json* and add it to the NiftyFolder root directory.  
 
 
 #### How to create a Google API project ####
@@ -44,10 +44,10 @@ Download the json client secret file from you Google API project, rename it to *
 2. Select the Google Drive API for your project.
 4. Choose to create a webapp.
 4. In the Credentials tab, select the New credentials drop-down list, and choose OAuth client ID.
-5. In the Authorized Redirect URIs field, enter this URL: [your app url]/admin/oauth2callback
+5. In the Authorized Redirect URIs field, enter this URL: `[your app url]/admin/oauth2callback*`
 6. Press the Create button.
-7. Download the client_secret json file (the download button is on the right).
-8. Rename this file to *client_secret.json* and add it to the NiftyFolder root directory.
+7. Download the client_id json file (the download button is on the right).
+8. Make sure the file is named *client_id.json* and add it to the NiftyFolder root directory.
 
 
 Using NiftyFolder
