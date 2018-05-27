@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ title }} - NiftyFolder</title>
+
+{% if content.css %}
+	<style type="text/css">{{ content.css|raw }}</style>
+{% endif %}
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<meta property="og:site_name" content="" />
+	<meta property="og:type" content="article" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:url" content="" />
+	<meta property="og:title" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:image" content="" />
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="img/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="img/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="img/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+	<link rel="apple-touch-icon" href="img/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="img/favicon-144.png">
+	<!-- ****** faviconit.com favicons ****** -->
+	<meta name="theme-color" content="#ffffff">
+
+</head>
+<body class="menu-closed">
+
+{% if flash.error or flash.success %}
+	<div class="alert{% if flash.error %} alert-danger{% else %} alert-success{% endif %}">
+		{% if flash.error %}{{ flash.error[0] }}{% else %}{{ flash.success[0] }}{% endif %}
+	</div>
+{% endif %}
+
+	<div class="cover menu-toggle"><!-- content cover on menu open --></div>
+
+	<div class="header-container">
+		<div class="header">
+			<div class="logo">
+				<a href="{{ app_url }}">
+					<img src="img/logo.png">
+				</a>
+			</div>
+			<h2 class="title"><a href="{{ app_url }}">NiftyFolder</a></h2>
+		</div>
+	</div><!-- /.header-container -->
+
+	<div class="main-container">
+		<div class="main">
+
+			<nav class="menu">
+				<div class="close-button menu-toggle">&#x2715;</div>
+
+{# Using https://github.com/jordanlev/twig-tree-tag #}
+{% tree item in menu %}
+{%	if treeloop.first %}				<ul>{% endif %}
+					<li>
+{% 	if item.type == 'folder' %}
+						<span class="folder">{{ item.name }}</span>
+{% 	elseif treeloop.level == 1 and treeloop.first %}
+						<a href="{{ app_url }}" class="{{ item.class }}">{{ item.name }}</a>
+{% 	else %}
+						<a href="{{ item.slug }}" class="{{ item.class }}">{{ item.name }}</a>
+{% 	endif %}
+		{% subtree item.children %}
+					</li>
+{%	if treeloop.last %}				</ul>{% endif %}
+{%endtree %}
+
+			</nav>
+
+			<div class="menu-button menu-toggle">Menu</div>
+
+{% if content %}
+			<div class="content"{% if content.contentstyle %} style="{{ content.contentstyle|raw }}"{% endif %}>
+{{ content.html|raw }}
+			</div><!-- /.content -->
+{% endif %}
+
+		</div>
+	</div><!-- /.main-container -->
+
+	<div class="footer-container">
+		<footer>
+			<div class="col">
+				<p>
+					<!-- MailChimp Signup Form -->
+					<form action="" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<label for="mce-EMAIL">Subscribe to our newsletter:</label>
+						<input type="email" value="" name="EMAIL" class="required email">
+						<input type="submit" value="Subscribe" name="subscribe">
+					</form>
+				</p>
+			</div>
+			<div class="col">
+				<p>
+					Follow us on
+				</p>
+					<a href="#" class="link-social">
+						<span class="icon-youtube"></span> Youtube
+					</a>
+					<a href="#" class="link-social">
+						<span class="icon-facebook"></span> Facebook
+					</a>
+					<a href="#" class="link-social">
+						<span class="icon-twitter"></span> Twitter
+					</a>
+					<a href="#" class="link-social">
+						<span class="icon-linkedin"></span> Linkedin
+					</a>
+					<a href="#" class="link-social">
+						<span class="icon-instagram"></span> Instagram
+					</a>
+				</p>
+			</div>
+			<div class="col">
+				<p>
+					<a class="credits" href="https://www.niftyfolder.com">
+						<img src="{{ app_url }}/img/nifty_footer.png"> Created with NiftyFolder</p>
+					</a>
+				</p>
+			</div>
+		</footer>
+	</div><!-- /.content-container -->
+
+	<script type="text/javascript">
+		let toggles = document.getElementsByClassName('menu-toggle');
+		let body = document.getElementsByTagName('body')[0];
+
+		// Menu
+		for (var i = 0; i < toggles.length; i++) {
+ 			toggles[i].onclick = function(){
+				if(body.className === 'menu-open'){
+					body.className = 'menu-closed';
+				} else {
+					body.className = 'menu-open';
+				}
+			}
+		}
+	</script>
+
+</body>
+</html>

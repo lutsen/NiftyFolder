@@ -1,0 +1,132 @@
+{% set title = 'Admin' %}
+
+{% extends "admin/base.html" %}
+
+{% block head %}
+{{ parent() }}
+	<link rel="stylesheet" href="{{ app_url }}/css/spinner.css">
+{% endblock head %}
+
+{% block content %}
+
+	<div class="page-header">
+		<h1><img src="{{ app_url }}/img/favicon-76.png" width="39" height="39"> NiftyFolder status</h1>
+	</div>
+
+{% if not clientsecret %}
+	<div class="panel panel-danger">
+		<div class="panel-heading">There is no client_secret.json file</div>
+		<div class="panel-body">
+			<p>For NiftyFolder to work, you need to <a href="https://console.developers.google.com/project/_/apiui/apis/library">create a Google API project web application</a>. When this is done, download the json client secret file from you Google API project, rename it to <b>client_secret.json</b> and add it to the NiftyFolder root directory. More info in the README.md file.</p>
+		</div>
+	</div>
+{% elseif not credentials %}
+	<div class="panel panel-danger">
+		<div class="panel-heading">Not connected to Google Drive</div>
+		<div class="panel-body">
+			<p>For NiftyFolder to work, it has to be connected to a Google account. This connection has to be established only once.</p>
+			<p>
+				<a href="{{ app_url }}/admin/oauth2callback" class="btn btn-primary">Connect to a Google account</a>
+			</p>
+		</div>
+	</div>
+{% else %}
+	<div class="panel panel-success">
+		<div class="panel-heading">Connected to Google Drive</div>
+		<div class="panel-body">
+			<p>
+				It looks like you are connected to a Google account. To connect again to (another) Google account if necessary, the file <b>credentials.json</b> has to be removed from the root directory of your webserver.
+			</p>
+			<p>
+				<form method="post" role="form" enctype="multipart/form-data" action="{{ app_url }}/admin/credentials">
+					<input type="hidden" name="_METHOD" value="delete"/>
+					<button type="submit" class="btn btn-default">Delete credentials.json</button>
+				</form>
+			</p>
+		</div>
+	</div>
+
+{% 	if folder_id %}
+	<div class="panel panel-success">
+		<div class="panel-heading">Your website folder is set</div>
+		<div class="panel-body">
+			<p>
+				The current home folder of your website is the folder with id <strong>{{ folder_id }}</strong>. You can select a different folder below:
+			</p>
+{% 	else %}
+	<div class="panel panel-danger">
+		<div class="panel-heading">Folder-id is not set</div>
+		<div class="panel-body">
+			<p>
+				Choose a folder for the home folder of your website.
+			</p>
+{% 	endif %}
+			<div id="folder-menu">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+				Loading all folders (this might take up to 1 minute)...
+			</div>
+		</div>
+	</div>
+
+{% 	if tree %}
+	<div class="panel panel-success">
+		<div class="panel-heading">tree.json exists</div>
+		<div class="panel-body">
+			<p>
+				The tree.json file contains the menu of your website. If the menu or structure of your website changes, you need to delete the tree.json file so a new one can be created.
+			</p>
+			<p>
+				<form method="post" role="form" enctype="multipart/form-data" action="{{ app_url }}/admin/tree">
+					<input type="hidden" name="_METHOD" value="delete"/>
+					<button type="submit" class="btn btn-default">Delete tree.json</button>
+				</form>
+			</p>
+		</div>
+	</div>
+{% 	else %}
+	<div class="panel panel-danger">
+		<div class="panel-heading">tree.json does not exist</div>
+		<div class="panel-body">
+			<p>
+				<a href="{{ app_url }}" target="_blank">Load your website</a> to generate the tree.json file.
+			</p>
+		</div>
+	</div>
+{% 	endif %}
+{% endif %}
+
+{% endblock content %}
+
+{% block javascript %}
+{% if credentials %}
+	<script src="https://cdn.rawgit.com/github/fetch/master/fetch.js"></script>
+	<script src="https://cdn.rawgit.com/dankogai/js-base64/2.4.3/base64.min.js"></script>
+	<script type="text/javascript">
+		let headers = new Headers();
+		headers.set( 'Authorization', 'Basic ' + Base64.encode( '{{ user }}:{{ password }}' ) );
+
+		fetch('{{ app_url }}/admin/folderselect', {
+				method:'GET',
+				headers: headers
+			}
+		)
+		.then(function(response) {
+			return response.blob();
+		})
+		.then(function(myBlob) {
+			// From https://medium.com/programmers-developers/convert-blob-to-string-in-javascript-944c15ad7d52
+			const reader = new FileReader();
+			// This fires after the blob has been read/loaded.
+			reader.addEventListener('loadend', (e) => {
+				const html = e.target.result;
+				document.getElementById('folder-menu').innerHTML = html;
+			});
+			reader.readAsText(myBlob);
+		});
+	</script>
+{% endif %}
+{% endblock javascript %}

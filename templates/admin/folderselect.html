@@ -1,0 +1,19 @@
+{% if error %}
+				{{ error }}
+{% elseif folders %}
+				<form method="post" role="form" enctype="multipart/form-data" action="{{ app_url }}/admin/folder" class="form-inline">
+					<input type="hidden" name="_METHOD" value="put"/>
+					<div class="form-group">
+						<select name="folder_id" class="form-control">
+{# Using https://github.com/jordanlev/twig-tree-tag #}
+{% 	tree folder in folders %}
+							<option value="{{ folder.id }}"{% if folder.id == folder_id %} selected{% endif %}>{{ '----------------------------------------------------------------------'|slice(0, treeloop.level0) }}{# Hack because for-loops does not work in tree #} {{ folder.name }}</option>
+					{% subtree folder.children %}
+{%	endtree %}
+						</select>
+					</div>
+					<button type="submit" class="btn btn-default">Set folder</button>
+				</form>
+{% else %}
+				Not connected to Google Drive.
+{% endif %}

@@ -1,0 +1,105 @@
+.footer-container {
+}
+
+footer {
+	margin: 0 auto;
+	.clearfix;
+
+	padding: 24px 12px 24px 12px;
+
+	.col {
+		padding: 0 12px;
+	}
+
+	@media (min-width: 1197px) {
+		width: 1197px;
+		padding: 24px 0 24px 384px;
+
+		.col {
+			.clearfix;
+			float: left;
+			width: 50%;
+			display: inline-block;
+		}
+	}
+
+	label {
+		margin: 0 0 1em 0;
+		display: block;
+	}
+
+	input[type=text],
+	input[type=email],
+	input[type=tel],
+	input[type=url],
+	input[type=search],
+	input[type=password] {
+		height: 32px;
+		line-height: 32px;
+		padding: 0 8px;
+		border: 1px solid #ccc;
+
+		width: 100%;
+		margin: 0 0 0.25em 0;
+
+		&::placeholder {
+			color: #ccc;
+			opacity: 1;
+		}
+
+		@media (min-width: 1120px) {
+			width: 200px;
+			margin: 0 0 1em 0;
+		}
+	}
+
+	button,
+	input[type=button],
+	input[type=submit] {
+		border: none;
+		background-color: @color-menu;
+		color: @background-color-body;
+		height: 32px;
+		line-height: 32px;
+		padding: 0 16px;
+		margin: 0 0 1em 0;
+		cursor: pointer;
+
+		width: 100%;
+
+		@media (min-width: 1120px) {
+			width: auto;
+		}
+	}
+
+	a {
+		color: @color-menu;
+		text-decoration: none;
+		.weight-bold;
+	}
+
+	.link-social {
+		width: 50%;
+		float: left;
+		vertical-align: top;
+		display: block;
+		margin-bottom: 1em;
+
+		& [class^="icon-"] {
+			margin-right: 0.5em;
+		}
+	}
+
+	.credits {
+		font-size: 0.75em;
+		color: rgba(0,0,0,0.33);
+
+		img {
+			vertical-align: middle;
+			width: 20px;
+			height: 20px;
+			margin-top: -4px;
+			margin-right: 4px;
+		}
+	}
+}

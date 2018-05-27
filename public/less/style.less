@@ -1,0 +1,106 @@
+@import 'normalize';
+@import 'clearfix';
+@import 'varaibles';
+@import 'icons';
+@import 'typography';
+@import 'alert';
+@import 'embeds';
+@import 'menu';
+@import 'footer';
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+* {
+	transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1); // http://easings.net
+}
+
+html,
+body {
+	.weight-regular;
+	font-size: 16px;
+	line-height: 1.4em;
+	color: #000000;
+	background-color: @background-color-body;
+}
+
+.header {
+	position: relative;
+	margin: 0 auto;
+	background-color: @background-color-header;
+
+	@media (min-width: 1197px) {
+		margin: 0 auto;
+		width: 1197px;
+	}
+}
+
+.logo {
+	width: 64px;
+	background-color: @background-color-logo;
+	padding: 24px 12px 12px 12px;
+
+	position: relative;
+	margin: 0 auto;
+
+	img {
+		width: 40px;
+		height: auto;
+
+		&:hover {
+			margin: -2px;
+			width: 44px;
+		}
+	}
+
+	@media (min-width: 1197px) {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+.title {
+	/* Not used in this theme */
+	display: none;
+}
+
+.main-container {
+	background-color: @background-color-main;
+}
+
+.main {
+	margin: 0 auto;
+	vertical-align: top;
+
+	@media (min-width: 1197px) {
+		width: 1197px;
+		padding: 0 0 48px 64px; /* Space for the logo */
+	}
+}
+
+.content {
+	background-color: @background-color-content;
+	overflow: hidden;
+	display: inline-block;
+	margin: 0;
+
+	width: ~"calc(100% - 24px)"; // Escape in LESS
+
+	@media (max-width: 1196px) {
+		padding: 24px 12px !important; // Overrule inline Google style
+
+		// Keep images inside content div
+		img, span {
+			width: auto !important;
+			height: auto !important;
+			max-width: 100% !important;
+		}
+	}
+
+	@media (min-width: 1197px) {
+		width: 795px;
+		vertical-align: top;
+	}
+}
