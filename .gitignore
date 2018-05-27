@@ -7,6 +7,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+public/config.codekit3
 
 # Config files #
 ################
@@ -15,6 +16,8 @@ config_live.php
 credentials.json
 client_secret.json
 client_secret*.json
+client_id.json
+client_id*.json
 tree.json
 
 # Directory contents #
@@ -22,6 +25,10 @@ tree.json
 vendor/*
 cache/*
 local/*
+
+# Live subscribe form and social links #
+########################################
+templates/public/index*.html
 
 # Composer #
 ############
