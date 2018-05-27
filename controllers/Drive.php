@@ -13,7 +13,7 @@ class Drive {
 	 */
 	function __construct() {
 		$this->client = new Google_Client();
-		$this->client->setAuthConfig( ROOT_PATH . '/client_secret.json' );
+		$this->client->setAuthConfig( ROOT_PATH . '/client_id.json' );
 
 		// Next two lines needed to obtain refresh_token.
 		// The offline access type allows NiftyFolder to access Google Drive when the owner is not present.

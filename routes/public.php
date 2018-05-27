@@ -17,7 +17,7 @@ $app->get('[/[{slug}]]', function ($request, $response, $args) {
 
 	try {
 
-		$clientsecret = file_exists( ROOT_PATH . '/client_secret.json' );
+		$clientid = file_exists( ROOT_PATH . '/client_id.json' );
 		$credentials = file_exists( ROOT_PATH . '/credentials.json' );
 
 		$folder_id = false;
@@ -26,10 +26,10 @@ $app->get('[/[{slug}]]', function ($request, $response, $args) {
 			$folder_id = FOLDER_ID;
 		}
 
-		if ( !$clientsecret || !$credentials || !$folder_id ) {
+		if ( !$clientid || !$credentials || !$folder_id ) {
 			return $this->view->render($response, 'admin/public.html', [
 				'flash' => $flash,
-				'clientsecret' => $clientsecret,
+				'clientid' => $clientid,
 				'credentials' => $credentials,
 				'folder_id' => $folder_id
 			]);

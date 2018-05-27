@@ -16,7 +16,7 @@ $app->group('/admin', function () {
 
 		try {
 
-			$clientsecret = file_exists( ROOT_PATH . '/client_secret.json' );
+			$clientid = file_exists( ROOT_PATH . '/client_id.json' );
 			$credentials = file_exists( ROOT_PATH . '/credentials.json' );
 
 			$folder_id = false;
@@ -31,7 +31,7 @@ $app->group('/admin', function () {
 
 		return $this->view->render($response, 'admin/index.html', [
 			'flash' => $flash,
-			'clientsecret' => $clientsecret,
+			'clientid' => $clientid,
 			'credentials' => $credentials,
 			'folder_id' => $folder_id,
 			'tree' => file_exists ( ROOT_PATH . '/tree.json'),

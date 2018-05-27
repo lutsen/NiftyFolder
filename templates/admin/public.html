@@ -1,4 +1,4 @@
-{# Page show on public route if client_secret.json, credentials.json or FOLDER_ID is missing #}
+{# Page show on public route if client_id.json, credentials.json or FOLDER_ID is missing #}
 {% set title = 'Something is missing...' %}
 
 {% extends "admin/base.html" %}
@@ -8,11 +8,11 @@
 		<h1><img src="{{ app_url }}/img/favicon-76.png" width="39" height="39"> Almost ready!</h1>
 	</div>
 
-{% if not clientsecret %}
+{% if not clientid %}
 	<div class="panel panel-danger">
-		<div class="panel-heading">There is no client_secret.json file</div>
+		<div class="panel-heading">There is no client_id.json file</div>
 		<div class="panel-body">
-			<p>For NiftyFolder to work, you need to <a href="https://console.developers.google.com/project/_/apiui/apis/library">create a Google API project web application</a>. When this is done, download the json client secret file from you Google API project, rename it to <b>client_secret.json</b> and add it to the NiftyFolder root directory. More info in the README.md file.</p>
+			<p>For NiftyFolder to work, you need to <a href="https://console.developers.google.com/project/_/apiui/apis/library">create a Google API project web application</a>. When this is done, download the json client secret file from you Google API project, rename it to <b>client_id.json</b> and add it to the NiftyFolder root directory. More info in the README.md file.</p>
 		</div>
 	</div>
 {% elseif not credentials %}
