@@ -1,7 +1,7 @@
 {
 	"name": "lutsen/niftyfolder",
 	"type": "project",
-	"description": "NiftyFolder turns any folder your Google Drive into a website in minutes.",
+	"description": "NiftyFolder turns any folder on your Google Drive into a website in minutes.",
 	"keywords": ["cms","content", "backend"],
 	"license": "MIT",
 	"authors": [
