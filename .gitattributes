@@ -1,0 +1,6 @@
+# Ignore CSS and HTML files in repo language detection #
+########################################################
+templates/* linguist-language=Twig
+public/css/* linguist-vendored
+public/less/* linguist-vendored
+public/img/* linguist-vendored
