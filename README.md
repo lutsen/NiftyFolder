@@ -44,7 +44,7 @@ Download the json client_id file from you Google API project, make sure the file
 2. Select the Google Drive API for your project.
 4. Choose to create a webapp.
 4. In the Credentials tab, select the New credentials drop-down list, and choose OAuth client ID.
-5. In the Authorized Redirect URIs field, enter this URL: `[your app url]/admin/oauth2callback*`
+5. In the Authorized Redirect URIs field, enter this URL: `[your app url]/admin/oauth2callback`
 6. Press the Create button.
 7. Download the client_id json file (the download button is on the right).
 8. Make sure the file is named *client_id.json* and add it to the NiftyFolder root directory.
@@ -55,10 +55,10 @@ Using NiftyFolder
 
 #### Preparing your website on your Google Drive ####
 
-The content of a NiftyFolder website lives in a folder on your Google Drive. All Google Docs in this folder are shown as pages on your website. You can set a homepage by putting a Google Doc in the root of the website folder on your Google Drive and make sure it is the first document in the alphabettical order of your file listing. You can force the order by putting \[1\] (a 1 between square brackets) at the start of your document name. This [1] is not displayed on your website.
+The content of a NiftyFolder website lives in a folder on your Google Drive. All Google Docs in this folder are shown as pages on your website. You can set a homepage by putting a Google Doc in the root of the website folder on your Google Drive and make sure it is the first document in the alphabetical order of your file listing. You can force the order by putting \[1\] (a 1 between square brackets) at the start of your document name. This [1] is not displayed on your website.
 
 You can add sub-folders inside this folders to create categories in the menu of your website.  
-Any files other then Google Docs are presented as downloads in your webiste menu.
+Any files other then Google Docs are presented as downloads in your website menu.
 
 
 #### Connect to a Google account ####
@@ -99,7 +99,7 @@ By default, pages in the website navigation are displayed alphabetticaly. You ca
 
 ### Adding a youtube movie to a page on your website ###
 
-You can't add Youtube movies to display in Google Docs, but you can in NiftyFolder! To display a Youtube video on your website, add a link to it in your Google Doc, surrounded by square brackets, like this: *\[https://youtu.be/tA3MIL2taW8\]*. The video will display in full page-width on your website.
+You can't add Youtube movies to display in Google Docs, but you can in NiftyFolder! To display a Youtube video on your website, add a link to it in your Google Doc, surrounded by square brackets, like this: *\[https://youtu.be/tA3MIL2taW8]*. The video will display in full page-width on your website.
 
 
 
