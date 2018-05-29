@@ -42,6 +42,48 @@ class Content {
 	}
 
 	/**
+	 * Replace links redirected through Google with direct links
+	 *
+	 * @param DOMDocument object	$body	First element of array $doc->getElementsByTagName('body');
+	 *
+	 * @return DOMDocument object
+	 */
+	private function directLinks( $body ) {
+		$links = $body->getElementsByTagName('a');
+		for ($i = $links->length - 1; $i >= 0; $i --) {
+			$links->item($i)->setAttribute( 'href',
+				$this->getDirectLink ( $links->item($i)->getAttribute( 'href' ) )
+			);
+		}
+
+		return $body;
+	}
+
+	/**
+	 * Filter q variable from Google URL and return it.
+	 *
+	 * @param string	$url
+	 *
+	 * @return string	Filtered q or $url if q is not found.
+	 */
+	private function getDirectLink ( $url ) {
+		$url_start  = 'https://www.google.com/url?q';
+		if ( substr( $url, 0, strlen( $url_start ) ) == $url_start ) {
+
+			$querystring = parse_url($url, PHP_URL_QUERY);
+			parse_str($querystring, $output);
+			if ( isset( $output['q'] ) ) {
+				return $output['q'];
+			} else {
+				return $url;
+			}
+
+		} else {
+			return $url;
+		}
+	}
+
+	/**
 	 * Get styling and HTML from Google Doc.
 	 * Returns an array with the following keys:
 	 * css: <style> in <head> tag of the Google Doc.
@@ -72,7 +114,9 @@ class Content {
 		$body = $doc->getElementsByTagName('body');
 		$bodystyle = $body[0]->getAttribute('style');
 		$return['contentstyle'] = substr( $bodystyle, 0, strpos($bodystyle, 'max-width:') ); // Strip maxwidth
-		$html = $this->innerHTML( $body[0] );
+		$html = $this->innerHTML(
+			$this->directLinks( $body[0] ) // Remove redirect via Google
+		);
 		// Add media embeds like Youtube
 		$return['html'] = $this->embedTags( $html );
 
