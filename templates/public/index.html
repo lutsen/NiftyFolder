@@ -9,7 +9,7 @@
 {% if content.css %}
 	<style type="text/css">{{ content.css|raw }}</style>
 {% endif %}
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="theme/css/style.css">
 
 	<meta property="og:site_name" content="" />
 	<meta property="og:type" content="article" />
@@ -56,7 +56,7 @@
 		<div class="header">
 			<div class="logo">
 				<a href="{{ app_url }}">
-					<img src="img/logo.png">
+					<img src="theme/img/logo.png">
 				</a>
 			</div>
 			<h2 class="title"><a href="{{ app_url }}">NiftyFolder</a></h2>
@@ -102,7 +102,6 @@
 		<footer>
 			<div class="col">
 				<p>
-					<!-- MailChimp Signup Form -->
 					<form action="" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 						<label for="mce-EMAIL">Subscribe to our newsletter:</label>
 						<input type="email" value="" name="EMAIL" class="required email">
