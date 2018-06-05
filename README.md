@@ -7,6 +7,7 @@
 
 NiftyFolder in a nutshell
 --------------------------
+
 Create a folder on your Google Drive. Add Google docs to this folder for all the pages of your website. Add sub-folders for different sections of your website if you want. Install NiftyFolder on your webserver. Connect to your Google Drive. Select your website folder on the NiftyFolder admin page. Done!
 
 NiftyFolder is a project written in PHP. It uses the Google API client PHP SDK.
@@ -15,7 +16,7 @@ NiftyFolder is a project written in PHP. It uses the Google API client PHP SDK.
 Requirements
 ------------
 
-- PHP 5.6.3 or newer
+- PHP 7.0.0 or newer
 - [A Google API project](https://console.developers.google.com/apis/library)
 
 
