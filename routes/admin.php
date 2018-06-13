@@ -20,7 +20,7 @@ $app->group('/admin', function () {
 			$credentials = file_exists( ROOT_PATH . '/credentials.json' );
 
 			$folder_id = false;
-			if ( FOLDER_ID AND strlen( FOLDER_ID ) > 0 ) {
+			if ( !empty( FOLDER_ID ) ) {
 				// Folder name
 				$folder_id = FOLDER_ID;
 			}
