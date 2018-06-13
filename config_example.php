@@ -62,19 +62,19 @@ define('SITE_TITLE', 'Nifty Folder');
  */
 define('SITE_DESCR', 'Turn any folder on your Google Drive into a website in minutes');
 /**
- * @const SITE_LOGO The URL of the logo image.
+ * @const SITE_LOGO The URL of the logo image. Leave empty to display no logo.
  */
 define('SITE_LOGO', 'theme/img/logo.png');
 /**
- * @const HEADER_BACKGROUND The URL of header background image image.
+ * @const HEADER_BACKGROUND The URL of header background image. Leave empty to display no background image.
  */
 define('HEADER_BACKGROUND', 'theme/img/header.jpg');
 
 
 /**
- * @const CTA_URL The URL the call-to-action button links to.
+ * @const CTA_URL The URL the call-to-action button links to. To display no call-to-action button and text, leave CTA_URL empty.
  */
-define('CTA_URL', '#');
+define('CTA_URL', 'https://confirmsubscription.com/h/j/1F6EF1371725EE60');
 /**
  * @const CTA_TEXT
  */
@@ -85,15 +85,20 @@ define('CTA_TEXT', 'Subscribe to our newsletter:');
 define('CTA_BUT', 'Subscribe');
 
 
-
 /**
- * @const SOCIAL_TEXT
+ * @const SOCIAL_TEXT The text above the social links.
  */
 define('SOCIAL_TEXT', 'Follow us on');
+
+
+/**
+ * You can add links to your social media below. If an URL is left blank, the link won't be displayed.
+ */
+
 /**
  * @const SOCIAL_FACEBOOK
  */
-define('SOCIAL_FACEBOOK', '#');
+define('SOCIAL_FACEBOOK', '');
 /**
  * @const SOCIAL_GITHUB
  */
@@ -101,7 +106,7 @@ define('SOCIAL_GITHUB', 'https://github.com/lutsen/niftyfolder');
 /**
  * @const SOCIAL_INSTAGRAM
  */
-define('SOCIAL_INSTAGRAM', '#');
+define('SOCIAL_INSTAGRAM', '');
 /**
  * @const SOCIAL_LINKEDIN
  */
@@ -109,11 +114,11 @@ define('SOCIAL_LINKEDIN', 'https://www.linkedin.com/in/lutsen/');
 /**
  * @const SOCIAL_RESEARCHGATE
  */
-define('SOCIAL_RESEARCHGATE', '#');
+define('SOCIAL_RESEARCHGATE', '');
 /**
  * @const SOCIAL_SNAPCHAT
  */
-define('SOCIAL_SNAPCHAT', '#');
+define('SOCIAL_SNAPCHAT', '');
 /**
  * @const SOCIAL_TWITTER
  */
@@ -121,7 +126,7 @@ define('SOCIAL_TWITTER', 'https://twitter.com/lutsen');
 /**
  * @const SOCIAL_YOUTUBE
  */
-define('SOCIAL_YOUTUBE', 'https://www.youtube.com/channel/UC7y16A9-RtjPm5dX8mXemRw');
+define('SOCIAL_YOUTUBE', '');
 
 
 ?>
