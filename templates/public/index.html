@@ -4,20 +4,26 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{ title }} - NiftyFolder</title>
+	<title>{{ title }} - {{ site_title }}</title>
+	<meta name="description" content="{{ site_descr }}" />
 
 {% if content.css %}
 	<style type="text/css">{{ content.css|raw }}</style>
 {% endif %}
+{% if header_image %}
+	<style type="text/css">
+		.header-container {
+			background-image: url('{{ header_image }}');
+		}
+	</style>
+{% endif %}
 	<link rel="stylesheet" type="text/css" href="theme/css/style.css">
 
-	<meta property="og:site_name" content="" />
+	<meta property="og:site_name" content="{{ site_title }}" />
 	<meta property="og:type" content="article" />
 	<meta property="og:locale" content="en_US" />
-	<meta property="og:url" content="" />
-	<meta property="og:title" content="" />
-	<meta property="og:description" content="" />
-	<meta property="og:image" content="" />
+	<meta property="og:url" content="{{ page_url }}" />
+	<meta property="og:title" content="{{ title }}" />
 	<!-- ****** faviconit.com favicons ****** -->
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<link rel="icon" sizes="16x16 32x32 64x64" href="img/favicon.ico">
@@ -42,7 +48,7 @@
 	<meta name="theme-color" content="#ffffff">
 
 </head>
-<body class="menu-closed">
+<body class="menu-closed{% if site_logo %} logo-displayed{% endif %}">
 
 {% if flash.error or flash.success %}
 	<div class="alert{% if flash.error %} alert-danger{% else %} alert-success{% endif %}">
@@ -54,12 +60,15 @@
 
 	<div class="header-container">
 		<div class="header">
+{% if site_logo %}
 			<div class="logo">
 				<a href="{{ app_url }}">
-					<img src="theme/img/logo.png">
+					<img src="{{ site_logo }}">
 				</a>
 			</div>
-			<h2 class="title"><a href="{{ app_url }}">NiftyFolder</a></h2>
+{% endif %}
+			<h2 class="title"><a href="{{ app_url }}">{{ site_title }}</a></h2>
+			<p class="description">{{ site_descr }}</p>
 		</div>
 	</div><!-- /.header-container -->
 
@@ -100,36 +109,33 @@
 
 	<div class="footer-container">
 		<footer>
+{% if cta_url %}
 			<div class="col">
+{% 	if cta_text %}
+				<p>{{ cta_text }}</p>
+{% 	endif %}
+{% 	if cta_but %}
+
 				<p>
-					<form action="" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-						<label for="mce-EMAIL">Subscribe to our newsletter:</label>
-						<input type="email" value="" name="EMAIL" class="required email">
-						<input type="submit" value="Subscribe" name="subscribe">
-					</form>
+					<a href="{{ cta_url }}" target="_blank" class="button">{{ cta_but }}</a>
+				</p>
+{% 	endif %}
+			</div>
+{% endif %}
+{% if social_links %}
+			<div class="col">
+{% 	if social_text %}
+				<p>{{ social_text }}</p>
+{% 	endif %}
+				<p>
+{% 	for name, url in social_links %}
+					<a href="{{ url }}" class="link-social">
+						<span class="icon-{{ name }}"></span> {{ name|capitalize }}
+					</a>
+{% 	endfor %}
 				</p>
 			</div>
-			<div class="col">
-				<p>
-					Follow us on
-				</p>
-					<a href="#" class="link-social">
-						<span class="icon-youtube"></span> Youtube
-					</a>
-					<a href="#" class="link-social">
-						<span class="icon-facebook"></span> Facebook
-					</a>
-					<a href="#" class="link-social">
-						<span class="icon-twitter"></span> Twitter
-					</a>
-					<a href="#" class="link-social">
-						<span class="icon-linkedin"></span> Linkedin
-					</a>
-					<a href="#" class="link-social">
-						<span class="icon-instagram"></span> Instagram
-					</a>
-				</p>
-			</div>
+{% endif %}
 			<div class="col">
 				<p>
 					<a class="credits" href="https://www.niftyfolder.com">

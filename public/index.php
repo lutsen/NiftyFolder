@@ -77,6 +77,47 @@ $container['view'] = function ($c) {
 	$view->offsetSet('app_url', APP_URL);
 	$view->offsetSet('page_url', APP_URL . $c['request']->getUri()->getPath());
 
+	$view->offsetSet('site_title', SITE_TITLE);
+	$view->offsetSet('site_descr', SITE_DESCR);
+
+	if ( !empty(SITE_LOGO) ) {
+		$view->offsetSet('site_logo', SITE_LOGO);
+	}
+	if ( !empty(HEADER_BACKGROUND) ) {
+		$view->offsetSet('header_image', HEADER_IMAGE);
+	}
+
+	// Call-to-action
+	if ( !empty(CTA_URL) ) {
+		$view->offsetSet('cta_url', CTA_URL);
+	}
+	if ( !empty(CTA_TEXT) ) {
+		$view->offsetSet('cta_text', CTA_TEXT);
+	}
+	if ( !empty(CTA_BUT) ) {
+		$view->offsetSet('cta_but', CTA_BUT);
+	}
+
+	if ( !empty(SOCIAL_TEXT) ) {
+		$view->offsetSet('social_text', SOCIAL_TEXT);
+	}
+
+	// Social links
+	$social['facebook'] = SOCIAL_FACEBOOK;
+	$social['github'] = SOCIAL_GITHUB;
+	$social['instagram'] = SOCIAL_INSTAGRAM;
+	$social['linkedin'] = SOCIAL_LINKEDIN;
+	$social['researchgate'] = SOCIAL_RESEARCHGATE;
+	$social['snapchat'] = SOCIAL_SNAPCHAT;
+	$social['twitter'] = SOCIAL_TWITTER;
+	$social['youtube'] = SOCIAL_YOUTUBE;
+	foreach ($social as $key => $value) {
+		if ( empty($value) ) {
+			unset( $social[$key] );
+		}
+	}
+	$view->offsetSet('social_links', $social);
+
 	// Tree
 	$view->addExtension(new QEEP\TwigTreeTag\Twig\Extension\TreeExtension());
 
