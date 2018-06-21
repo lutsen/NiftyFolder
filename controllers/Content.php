@@ -90,16 +90,16 @@ class Content {
 	 * contentstyle: The inline styling of <body> tag, with max-width stripped off.
 	 * html: The content of <body> tag.
 	 *
-	 * @param string	$service
 	 * @param string	$file_id
 	 *
 	 * @return array	Array with ['css'], ['contentstyle'] and ['html']
 	 */
-	public function getDocContent( $service, $file_id ) {
+	public function getDocContent( $file_id ) {
 		$return = [];
 
 		// Load content
-		$response = $service->files->export( $file_id, 'text/html', array('alt' => 'media') );
+		$drive = new \Drive();
+		$response = $drive->service()->files->export( $file_id, 'text/html', array('alt' => 'media') );
 		$doc = new \DOMDocument();
 		$doc->loadHTML( $response->getBody()->getContents() );
 
@@ -126,15 +126,15 @@ class Content {
 	/**
 	 * Get content of a non-google-doc, like an image or PDF or Word or other type of file.
 	 *
-	 * @param string	$service
 	 * @param string	$file_id
 	 *
 	 * @return string	Content from the file.
 	 */
-	public function getOtherContent( $service, $file_id ) {
+	public function getOtherContent( $file_id ) {
 
 		// Load content
-		$response = $service->files->get( $file_id, array('alt' => 'media') );
+		$drive = new \Drive();
+		$response = $drive->service()->files->get( $file_id, array('alt' => 'media') );
 
 		return $response->getBody()->getContents();
 

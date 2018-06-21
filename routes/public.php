@@ -66,12 +66,12 @@ $app->get('[/[{slug}]]', function ($request, $response, $args) {
 			if ( $properties['type'] == 'document' ) {
 
 				// Get HTML content
-				$content = $c->getDocContent( $drive->service(), $properties['id'] );
+				$content = $c->getDocContent( $properties['id'] );
 
 			} else {
 
 				// Get non-HTML content
-				$content = $c->getOtherContent( $drive->service(), $properties['id'] );
+				$content = $c->getOtherContent( $properties['id'] );
 
 				switch ( $properties['type'] ) {
 					// Show in browser
